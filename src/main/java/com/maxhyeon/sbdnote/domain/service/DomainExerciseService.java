@@ -14,8 +14,8 @@ public class DomainExerciseService implements ExerciseService {
     }
 
     @Override
-    public UUID createExercise(final Exercise exerciseRequest) {
-        final Exercise exercise = new Exercise(UUID.randomUUID(), exerciseRequest.getExerciseName());
+    public UUID createExercise(String exerciseName) {
+        final Exercise exercise = new Exercise(UUID.randomUUID(), exerciseName);
         exerciseRepository.save(exercise);
         return exercise.getExerciseId();
     }

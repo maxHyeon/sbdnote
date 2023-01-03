@@ -25,7 +25,7 @@ public class ExerciseController {
 
     @PostMapping( produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE )
     CreateExerciseResponse createExercise(@RequestBody final CreateExerciseRequest createExerciseRequest){
-        final UUID exerciseId =  exerciseService.createExercise(createExerciseRequest.getExercise());
+        final UUID exerciseId =  exerciseService.createExercise(createExerciseRequest.getExercise().getExerciseName());
         return new CreateExerciseResponse(exerciseId);
     }
 
