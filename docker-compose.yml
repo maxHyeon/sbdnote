@@ -1,0 +1,17 @@
+#docker-compose up -d exercise-db
+#docker exec -it  sbdnode-exercise-db-1 bash
+#mongosh -u root -p root
+version: '3.1'
+
+services:
+  exercise-db:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: exercise
+    ports:
+      - 27017:27017
+    volumes:
+      - ./init-mongodb/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
