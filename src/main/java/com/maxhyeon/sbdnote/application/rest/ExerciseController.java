@@ -18,24 +18,24 @@ public class ExerciseController {
     private final ExerciseService exerciseService;
     private final ExerciseResponseMapper exerciseResponseMapper;
 
-    public ExerciseController( ExerciseService exerciseService, ExerciseResponseMapper exerciseResponseMapper ) {
+    public ExerciseController(ExerciseService exerciseService, ExerciseResponseMapper exerciseResponseMapper) {
         this.exerciseService = exerciseService;
         this.exerciseResponseMapper = exerciseResponseMapper;
     }
 
-    @PostMapping( produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE )
-    CreateExerciseResponse createExercise(@RequestBody final CreateExerciseRequest createExerciseRequest){
-        final UUID exerciseId =  exerciseService.createExercise(createExerciseRequest.getExercise().getExerciseName());
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    CreateExerciseResponse createExercise(@RequestBody final CreateExerciseRequest createExerciseRequest) {
+        final UUID exerciseId = exerciseService.createExercise(createExerciseRequest.getExercise().getExerciseName());
         return new CreateExerciseResponse(exerciseId);
     }
 
     @GetMapping
-    List<ExerciseResponse> listExercises(){
+    List<ExerciseResponse> listExercises() {
         return exerciseResponseMapper.toListExerciseResponse(exerciseService.listExercises());
     }
 
-    @DeleteMapping(value="/{exerciseId}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    void deleteExercise(@PathVariable final UUID exerciseId){
+    @DeleteMapping(value = "/{exerciseId}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    void deleteExercise(@PathVariable final UUID exerciseId) {
         exerciseService.deleteExercise(exerciseId);
     }
 }

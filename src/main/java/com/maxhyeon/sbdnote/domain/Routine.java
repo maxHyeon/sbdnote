@@ -33,22 +33,41 @@ public class Routine {
                 .orElseThrow(() -> new DomainException("RoutineExercise index " + routineExerciseIndex + " doesn't exist."));
     }
 
-    public int getInputRoutineExerciseIndex(final UUID id){
-        if (routineExerciseList.isEmpty()) { return 0 ; };
-        return routineExerciseList.size() ;
+    public int getInputRoutineExerciseIndex(final UUID id) {
+        if (routineExerciseList.isEmpty()) {
+            return 0;
+        }
+        return routineExerciseList.size();
     }
 
     public void addRoutine(final int routineExerciseIndex, final Exercise exercise) {
-        routineExerciseList.add(new RoutineExercise(routineExerciseIndex,exercise));
+        routineExerciseList.add(new RoutineExercise(routineExerciseIndex, exercise));
     }
 
-    public void addRoutineExerciseSet(final int routineExerciseIndex, Set set){
-        RoutineExercise routineExercise = routineExerciseList
-                .stream()
-                .filter(routineExerciseTemp -> routineExerciseTemp.getRoutineExerciseIndex() == routineExerciseIndex)
-                .findFirst()
-                .orElseThrow(() -> new DomainException("RoutineExercise index " + routineExerciseIndex + " doesn't exist."));
-        routineExercise.getSets().add(set);
+    public void updateRoutineExerciseSet(final int routineExerciseIndex, final List<Set> sets) {
+        getRoutineExercise(routineExerciseIndex)
+                .setSets(sets);
+    }
+
+    public void addRoutineExerciseSet(final int routineExerciseIndex, Set set) {
+        getRoutineExercise(routineExerciseIndex)
+                .getSets()
+                .add(set);
+    }
+
+    public void deleteRoutineExerciseLastSet(final int routineExerciseIndex) {
+        RoutineExercise routineExercise = getRoutineExercise(routineExerciseIndex);
+        List<Set> sets = routineExercise.getSets();
+        if (sets.isEmpty() || sets == null) {
+            new DomainException(routineExercise.getExercise().getExerciseName() + "'s set is not exist");
+        }
+        sets.remove(sets.size() - 1);
+    }
+
+    public int getRoutineExerciseSetLastIndex(final int routineExerciseIndex) {
+        List<Set> sets = getRoutineExercise(routineExerciseIndex).getSets();
+        if (sets.isEmpty() || sets == null) { return 0; }
+        return sets.size() -1 ;
     }
 
 }

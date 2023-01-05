@@ -16,9 +16,13 @@ public class RoutineExercise {
     private int routineExerciseIndex;
     private Exercise exercise;
     private List<Set> sets;
-    public RoutineExercise(final int routineExerciseIndex,final Exercise exercise){
+
+    public RoutineExercise(final int routineExerciseIndex, final Exercise exercise) {
         this.routineExerciseIndex = routineExerciseIndex;
         this.exercise = exercise;
         this.sets = new ArrayList<>();
+    }
+    void setSets(List<Set> sets){
+        this.sets = sets;
     }
 }

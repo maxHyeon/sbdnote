@@ -21,7 +21,7 @@ public class Weight {
         this.value = value;
     }
 
-    public Weight(){
+    public Weight() {
         this.unit = unitValidationCheck(null);
     }
 

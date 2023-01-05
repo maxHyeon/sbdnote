@@ -13,7 +13,7 @@ public interface RoutineService {
     void deleteRoutine (final UUID id);
     void updateRoutineName (final Routine routine);
     void addRoutineExercise (final UUID id, final Exercise exercise);
-    void addRoutineExerciseSet(final UUID id, final int routineExerciseIndex, final Set set);
+    void updateRoutineExerciseSets(final UUID id, final int routineExerciseIndex, final List<Set> sets);
     void completeRoutine (final Routine routine);
 
     List<Routine> listRoutine() ;

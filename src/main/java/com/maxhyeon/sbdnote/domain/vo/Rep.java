@@ -17,15 +17,19 @@ public class Rep {
         this.value = value;
     }
 
-    public Rep (Unit unit, float value){
+    public Rep(Unit unit, float value) {
         this.unit = unitValidationCheck(unit);
         this.value = value;
     }
-    public Rep(){
+
+    public Rep() {
         this.unit = unitValidationCheck(null);
     }
-    private Unit unitValidationCheck(Unit unit){
-        if (unit == null ) { unit = Unit.REP; }
+
+    private Unit unitValidationCheck(Unit unit) {
+        if (unit == null) {
+            unit = Unit.REP;
+        }
         return unit;
     }
 

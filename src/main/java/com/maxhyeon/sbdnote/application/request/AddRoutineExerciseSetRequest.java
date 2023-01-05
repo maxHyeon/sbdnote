@@ -1,28 +1,22 @@
 package com.maxhyeon.sbdnote.application.request;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.maxhyeon.sbdnote.domain.vo.Rep;
-import com.maxhyeon.sbdnote.domain.vo.Weight;
+import com.maxhyeon.sbdnote.domain.vo.Set;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
+
+import java.util.List;
 
 @Getter
 public class AddRoutineExerciseSetRequest {
     @NotNull
-    private int sequence;
-    @NotNull
-    private Weight weight;
-    @NotNull
-    private Rep rep;
+    private List<Set> sets;
 
     @JsonCreator
-    public AddRoutineExerciseSetRequest(@JsonProperty("sequence") final int sequence,
-                                        @JsonProperty("weight") final Weight weight,
-                                        @JsonProperty("rep") final Rep rep){
-        this.sequence = sequence;
-        this.weight = weight;
-        this.rep = rep;
+    public AddRoutineExerciseSetRequest(@JsonProperty("sets") @JsonInclude(JsonInclude.Include.NON_NULL) @NotNull final List<Set> sets) {
+        this.sets = sets;
     }
 
 }

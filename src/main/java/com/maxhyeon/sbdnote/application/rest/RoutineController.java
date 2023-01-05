@@ -2,7 +2,6 @@ package com.maxhyeon.sbdnote.application.rest;
 
 import com.maxhyeon.sbdnote.application.request.AddRoutineExerciseRequest;
 import com.maxhyeon.sbdnote.application.request.AddRoutineExerciseSetRequest;
-import com.maxhyeon.sbdnote.application.request.AddRoutineExerciseSetRequestMapper;
 import com.maxhyeon.sbdnote.application.request.CreateRoutineRequest;
 import com.maxhyeon.sbdnote.application.response.CreateRoutineResponse;
 import com.maxhyeon.sbdnote.application.response.RoutineResponse;
@@ -20,12 +19,10 @@ import java.util.UUID;
 public class RoutineController {
     private final RoutineService routineService;
     private final RoutineResponseMapper routineResponseMapper;
-    private final AddRoutineExerciseSetRequestMapper addRoutineExerciseSetRequestMapper;
 
-    public RoutineController(RoutineService routineService, RoutineResponseMapper routineResponseMapper, AddRoutineExerciseSetRequestMapper addRoutineExerciseSetRequestMapper) {
+    public RoutineController(RoutineService routineService, RoutineResponseMapper routineResponseMapper) {
         this.routineService = routineService;
         this.routineResponseMapper = routineResponseMapper;
-        this.addRoutineExerciseSetRequestMapper = addRoutineExerciseSetRequestMapper;
     }
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -43,9 +40,9 @@ public class RoutineController {
     void addRoutineExerciseSet(@PathVariable final UUID routineId,
                                @PathVariable final int routineExerciseIndex,
                                @RequestBody final AddRoutineExerciseSetRequest addRoutineExerciseSetRequest){
-        routineService.addRoutineExerciseSet(routineId,
+        routineService.updateRoutineExerciseSets(routineId,
                 routineExerciseIndex,
-                addRoutineExerciseSetRequestMapper.toSet(addRoutineExerciseSetRequest));
+                addRoutineExerciseSetRequest.getSets());
     }
 
     @GetMapping
@@ -58,5 +55,4 @@ public class RoutineController {
         return routineService.getRoutine(routineId);
     }
 
-    ;
 }

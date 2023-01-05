@@ -14,7 +14,7 @@ public class AddRoutineExerciseRequest {
     private Exercise exercise;
 
     @JsonCreator
-    public AddRoutineExerciseRequest(@JsonProperty("exercise") @NotNull final Exercise exercise){
+    public AddRoutineExerciseRequest(@JsonProperty("exercise") @NotNull final Exercise exercise) {
         this.exercise = exercise;
     }
 }

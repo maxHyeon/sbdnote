@@ -9,7 +9,8 @@ import lombok.Getter;
 
 @Getter
 public class CreateExerciseRequest {
-    @NotNull private Exercise exercise;
+    @NotNull
+    private Exercise exercise;
 
     @JsonCreator
     public CreateExerciseRequest(@JsonProperty("exercise") @NotNull final Exercise exercise) {

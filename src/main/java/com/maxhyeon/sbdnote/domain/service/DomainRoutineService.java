@@ -2,7 +2,6 @@ package com.maxhyeon.sbdnote.domain.service;
 
 import com.maxhyeon.sbdnote.domain.Exercise;
 import com.maxhyeon.sbdnote.domain.Routine;
-import com.maxhyeon.sbdnote.domain.RoutineExercise;
 import com.maxhyeon.sbdnote.domain.repository.RoutineRepository;
 import com.maxhyeon.sbdnote.domain.vo.Set;
 
@@ -43,10 +42,9 @@ public class DomainRoutineService implements RoutineService {
         routineRepository.save(routine);
     }
 
-    @Override
-    public void addRoutineExerciseSet(UUID id, int routineExerciseIndex, Set set) {
+    public void updateRoutineExerciseSets(UUID id, int routineExerciseIndex, List<Set> sets) {
         final Routine routine = getRoutine(id);
-        routine.addRoutineExerciseSet(routineExerciseIndex, set);
+        routine.updateRoutineExerciseSet(routineExerciseIndex, sets);
         routineRepository.save(routine);
     }
 
