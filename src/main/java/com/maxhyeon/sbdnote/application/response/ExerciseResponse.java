@@ -10,6 +10,6 @@ import java.util.UUID;
 @Getter
 @Builder
 public class ExerciseResponse {
-    private UUID exerciseId;
+    private UUID id;
     private String exerciseName;
 }

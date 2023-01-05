@@ -30,8 +30,8 @@ public class MongoDBExerciseRepository implements ExerciseRepository {
     }
 
     @Override
-    public void deleteByExerciseId(final UUID exerciseId) {
-        exerciseRepository.deleteByExerciseId(exerciseId);
+    public void deleteById(final UUID id) {
+        exerciseRepository.deleteById(id);
     }
 
     @Override

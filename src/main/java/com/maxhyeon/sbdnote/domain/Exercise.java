@@ -9,7 +9,7 @@ import java.util.UUID;
 @Getter
 @AllArgsConstructor
 public class Exercise {
-    private UUID exerciseId;
+    private UUID id;
     private String exerciseName;
 
     public void validateExercise(final Exercise exercise) {
@@ -23,7 +23,7 @@ public class Exercise {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Exercise exercise = (Exercise) o;
-        return Objects.equals(exerciseId, exercise.exerciseId) && Objects.equals(exerciseName, exercise.exerciseName);
+        return Objects.equals(id, exercise.id) && Objects.equals(exerciseName, exercise.exerciseName);
     }
 
 }

@@ -8,11 +8,11 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface ExerciseRepository {
-    Optional<Exercise> findById(UUID exerciseId);
+    Optional<Exercise> findById(UUID id);
 
     void save(Exercise exercise);
 
-    void deleteByExerciseId(UUID exerciseId);
+    void deleteById(UUID id);
 
     List<Exercise> findAll();
 

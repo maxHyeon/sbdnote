@@ -8,5 +8,5 @@ import java.util.UUID;
 
 @Repository
 public interface SpringDataMongoDBRoutineRepository extends MongoRepository<Routine, UUID> {
-
+    Routine findRoutineById(UUID id);
 }

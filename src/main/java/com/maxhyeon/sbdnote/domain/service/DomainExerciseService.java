@@ -17,17 +17,17 @@ public class DomainExerciseService implements ExerciseService {
     public UUID createExercise(String exerciseName) {
         final Exercise exercise = new Exercise(UUID.randomUUID(), exerciseName);
         exerciseRepository.save(exercise);
-        return exercise.getExerciseId();
+        return exercise.getId();
     }
 
     @Override
-    public void editExercise(UUID exerciseId) {
+    public void editExercise(UUID id) {
         ;
     }
 
     @Override
-    public void deleteExercise(UUID exerciseId) {
-        exerciseRepository.deleteByExerciseId(exerciseId);
+    public void deleteExercise(UUID id) {
+        exerciseRepository.deleteById(id);
     }
 
     @Override

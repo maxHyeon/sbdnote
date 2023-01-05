@@ -6,6 +6,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class Set {
-    private Weight weight ;
-    private Rep rep ;
+    private int sequence;
+    private Weight weight;
+    private Rep rep;
 }

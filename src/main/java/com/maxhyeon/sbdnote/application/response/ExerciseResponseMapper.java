@@ -12,7 +12,7 @@ import java.util.List;
 public interface ExerciseResponseMapper {
 
     @Mappings({
-            @Mapping(source = "exerciseId", target = "exerciseId"),
+            @Mapping(source = "id", target = "id"),
             @Mapping(source = "exerciseName", target = "exerciseName")
     })
     List<ExerciseResponse> toListExerciseResponse(List<Exercise> exerciseList) ;

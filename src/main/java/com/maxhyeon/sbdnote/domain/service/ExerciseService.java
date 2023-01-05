@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public interface ExerciseService {
     UUID createExercise(String exerciseName);
-    void editExercise(UUID exerciseId);
+    void editExercise(UUID id);
     void deleteExercise(UUID id);
     List<Exercise> listExercises();
 }

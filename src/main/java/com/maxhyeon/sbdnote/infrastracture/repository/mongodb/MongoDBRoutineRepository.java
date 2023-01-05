@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.UUID;
 
 @Component
 @Primary
@@ -25,6 +26,11 @@ public class MongoDBRoutineRepository implements RoutineRepository {
     @Override
     public List<Routine> findAll() {
         return routineRepository.findAll();
+    }
+
+    @Override
+    public Routine findRoutineById(UUID id) {
+        return routineRepository.findRoutineById(id);
     }
 
 }
